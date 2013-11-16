@@ -155,7 +155,7 @@ var path           = require('path'),
             sass: {
                 dist: {
                     files: {
-                        'public/sass/blog.scss' :'public/css/blog.css'
+                        'public/css/blog.css' :'public/sass/blog.scss'
                     },
                     options: {
                         loadPath: bourbon,
