@@ -1,14 +1,17 @@
 /*global should, exports, describe, mocha, it, jquery, expect, example, beforeEach, mocha */
 
-
+var $iframe;
+$(document).ready(function(){
+	"use strict";
+	$("body").append("<iframe src ='http://localhost:5000' id='test'></iframe>");
+	$iframe = $("#test");
+});
 (function(){
 	"use strict";
 	//turns off debugger statements for completed tasks.
 	var quietModeIsOn = true;
 	function quietMode(on, debuggerStatement){
-		if( on === true ){
-			console.log("\n the quieter you are, the more you are able to hear");
-		} else {
+		if( on !== true ){
 			debuggerer(debuggerStatement);
 		}
 	}
@@ -52,6 +55,31 @@
 
 	};
 
+
+
+	describe("is iframe size less than window?", function(){
+		it("should be", function(){
+			var wid = $iframe.width();
+			var winWid = $(window).width();
+			expect(wid).to.be.lessThan(winWid);
+
+		});
+	});
+	describe("does iframe exist", function(){
+		it("there should be an iframe.", function(){
+			expect($iframe);
+			//expect(iframe.length).to.equal(1);
+			if(!$iframe){
+				debuggerer("no iframe");
+			}
+		});
+	});
+	describe("example", function(){
+		it("should run", function(){
+			//expect(code.foo()).to.equal("foo");
+			//for some reason, code it's saying code is undefined
+		});
+	});
 	describe("verify properties exist", function(){
 		var obj = new Obj($("body"));
 		it("will list properties of the object", function(){
@@ -69,8 +97,6 @@
 			var num = obj.listProperties(true);
 				expect(num).to.be.greaterThan(1);
 				quietMode(quietModeIsOn, num);
-
-
 		});
 	});
 	describe("verify properties exist", function(){

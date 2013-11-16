@@ -57,12 +57,26 @@ module.exports = function(config) {
     captureTimeout: 60000,
 
 	  // list of files / patterns to load in the browser
+
+	  //MOCHA, MOCHA_ADAPTER , node_modules/should/should.js
 	  files: [{
 			  pattern: 'public/js/lib/jquery.js',
 			  watched: false,
 		      included: true,
 			  served: true
 		  },{
+		  pattern: 'node_modules/should/should.js',
+		  watched: false,
+		  included: true,
+		  served: true
+	    },
+
+		  {
+		  pattern: 'node_modules/karma-mocha/lib/adapter.js',
+		  watched: false,
+		  included: true,
+		  served: true
+	     },{
 			  pattern: 'public/js/lib/jquery.min.map',
 			  watched: false,
 			  included: false,

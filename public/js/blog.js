@@ -1,6 +1,14 @@
-
+var code = {};
 (function ($) {
 	"use strict";
+
+
+code.foo = function(){
+	alert("foo");
+	return "foo";
+	};
+
+
 function getWindowDimensions(){
     var win = {
         widthRem: (window.innerWidth / 10) + "rem",
