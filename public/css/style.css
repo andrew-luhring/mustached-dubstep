@@ -1,219 +1,335 @@
 @font-face {
-  font-family: Avenir;
-  src: url("/sass/fonts/avenir_next.ttf");
+  font-family: "monofur";
+  src: url("../fonts/monof55.woff");
+  src: url("../fonts/monofur.ttf");
 }
-
-a {
-  text-decoration: none;
-}
-
-li {
-  list-style-type: none;
-}
-
-ul, h1, h2, h3, h4, h5, h6, ul, li, p, hr, blockquote {
-  -webkit-margin-before: 0;
-  -webkit-margin-after: 0;
-  -webkit-padding-start: 0;
-  -webkit-margin-start: 0;
-  -webkit-margin-end: 0;
-}
-
-hr {
-  display: inline;
-  border: none;
-  outline: none;
-  height: 1px;
-  opacity: 0.0;
-}
-
 html {
   font-size: 62.5%;
 }
 
-header a, footer a, nav a {
-  transition: all 1s;
-  color: white;
-}
-header a:hover, footer a:hover, nav a:hover {
-  transition: all 1s;
-  color: #0F5485;
-  background: #eee;
-}
-
-.flexbox .top_nav ul {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: flex-end;
-}
-
-.no-flexbox .top_nav ul {
-  display: block;
-  float: right;
-}
-.no-flexbox .top_nav ul li {
-  display: inline-table;
-}
-
-.top_nav {
-  width: 100%;
-  min-width: 750px;
-  position: relative;
-  height: 8rem;
-  position: absolute;
-}
-.top_nav ul {
-  height: 100%;
-  max-width: 96rem;
-  min-width: 40rem;
-  margin: auto;
-}
-.top_nav li {
-  display: table;
-  text-align: center;
-  transition: all 0.5s;
-  background: #79daff;
-  width: 7rem;
-  height: 7rem;
-  padding: 0.5rem;
-}
-.top_nav li a {
-  display: table-cell;
-  vertical-align: middle;
-  border: 1px solid white;
-  border-radius: 50%;
-}
-
 body {
-  font: normal normal 100 1.6rem "Avenir";
-  background: #f5f5f5;
+  font-size: 1.6rem;
+  background: whitesmoke;
+  color: #111111;
+  font-family: "Open Sans";
+  font-weight: 400;
+  margin: 0;
 }
 
-body, header, footer, .main {
-  margin: auto;
+a {
+  text-decoration: none;
+  transition: all 1s;
+  color: #f05341;
+}
+a:hover {
+  transition: all 1s;
 }
 
-.main, header h1 {
-  width: 100%;
+ul, li {
+  list-style-type: none;
 }
 
-#page_header h1, #recommendation {
-  padding-left: 4rem;
+ul, h1, h2, h3, h4, h5, h6, ul, li, ol, p, hr, blockquote, menu, dir, dl, dt, dd, defs, details, summary, figure, label, legend, code, pre, output {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-start: 0;
+  -webkit-padding-end: 0;
+  -webkit-padding-before: 0;
+  -webkit-padding-after: 0;
+  -moz-margin-before: 0;
+  -moz-margin-after: 0;
+  -moz-margin-start: 0;
+  -moz-margin-end: 0;
+  -moz-padding-start: 0;
+  -moz-padding-end: 0;
+  -moz-padding-before: 0;
+  -moz-padding-after: 0;
+  -ms-margin-before: 0;
+  -ms-margin-after: 0;
+  -ms-margin-start: 0;
+  -ms-margin-end: 0;
+  -ms-padding-start: 0;
+  -ms-padding-end: 0;
+  -ms-padding-before: 0;
+  -ms-padding-after: 0;
+  -o-margin-before: 0;
+  -o-margin-after: 0;
+  -o-margin-start: 0;
+  -o-margin-end: 0;
+  -o-padding-start: 0;
+  -o-padding-end: 0;
+  -o-padding-before: 0;
+  -o-padding-after: 0;
 }
 
-.main aside, .major_section .section_header h1, #page_header h1, .position, .skills_list {
-  max-width: 96rem;
-  min-width: 40rem;
-  margin: auto;
-}
-
-.main {
-  max-width: none;
-  width: 100%;
-}
-
-.main {
-  margin: 3rem auto;
-}
-
-header {
-  background: #79daff;
-  display: flex;
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway";
+  font-weight: 900;
+  color: #111111;
 }
 
 h1 {
-  font-size: 4.4rem;
-  color: white;
+  font-size: 3.2rem;
 }
 
-footer {
-  width: 100%;
-}
-footer > div {
-  max-width: 96rem;
-  min-width: 40rem;
-  margin: auto;
-}
-footer p {
-  display: table;
-  float: right;
-  color: white;
-  padding: 0.5rem;
-}
-footer p a {
-  border: 1px solid white;
-  border-radius: 50%;
-  width: 7rem;
-  height: 7rem;
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  color: white;
+h2 {
+  font-size: 2.8rem;
 }
 
-#page_header {
-  height: 8rem;
+input::-webkit-inner-spin-button {
+  -webkit-appearance: initial;
 }
 
-.top_nav li, #page_header, footer {
-  background: #06baff;
-}
-
-.major_section .section_header {
-  margin: 2rem auto;
-}
-.major_section .section_header h1 {
-  padding-left: 4rem;
-  font-size: 3rem;
-}
-.major_section .position > header {
-  margin: 2rem auto 0.5rem;
-}
-
-.skills_list ul {
+.flexbox #main_nav {
+  display: -webkit-flex;
+  display: -moz-flex;
   display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
   flex-direction: row;
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  flex: 1;
+  -webkit-align-content: center;
+  -moz-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
 }
-.skills_list ul div {
+
+#main_nav.updated {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+}
+
+.command {
+  width: 75px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font: normal normal 900 5rem "Quicksand", sans-serif;
+  overflow: hidden;
+  border: 8px solid whitesmoke;
+  border-radius: 50%;
+  background: #111111;
+  color: whitesmoke;
+  box-shadow: 0 0 10px 0 #111111;
+  margin: 10px;
+}
+
+.up {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.down {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+#page_head menu, #page_head section, #page_head label, #page_head textarea {
+  margin: auto;
   flex: 1;
 }
 
-#education .position li {
-  display: inline-block;
+#site-head,
+#site-head > div {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  flex: 1;
+  width: 100%;
+  text-align: center;
 }
 
-.position, .skills_list {
-  padding-left: 4rem;
-}
-.position > header, .skills_list > header {
-  background: none;
-}
-.position > header h1, .skills_list > header h1 {
-  font-size: 2rem;
-  color: #555;
+#site-head {
+  min-height: 125px;
 }
 
-#experience li:before {
-  content: "\2014";
+#site-head-content {
+  -webkit-box-align: stretch;
+  -moz-box-align: stretch;
+  box-align: stretch;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+}
+#site-head-content h2 {
+  flex: 1;
+  font-weight: 300;
+}
+#site-head-content .logo {
+  position: relative;
+  flex: 1;
+}
+#site-head-content .logo h1 {
+  font-size: 15rem;
+  font-family: "monofur";
+  text-transform: lowercase;
+  font-weight: 500;
+  letter-spacing: -9px;
+  word-spacing: 0px;
+  margin: 0;
+  top: 0px;
+  -webkit-transition: all, 1s;
+  -moz-transition: all, 1s;
+  transition: all, 1s;
 }
 
-.major_section {
-  font: normal normal 300 1.6rem "Raleway", sans-serif;
+section {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  justify-content: space-around;
+  -webkit-align-content: center;
+  -moz-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  margin: 0 40px;
+  min-width: 700px;
+  max-width: 960px;
+}
+section > div {
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  align-self: flex-start;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+}
+
+input:not([type="color"])
+, select {
+  flex: 1;
+}
+
+input, select {
+  margin: 10px auto;
+}
+
+input[type="color"], input[type="number"] {
+  height: 75px;
+  width: 75px;
+}
+
+input {
+  padding: 0;
+  height: 40px;
+  text-align: center;
+  flex: 0.5;
+}
+
+figure.example {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: left;
   overflow: hidden;
+  border: 5px solid #111111;
+  padding: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: whitesmoke;
 }
-.major_section .section_header {
-  height: 6.5rem;
-}
-.major_section .section_header  h1 {
-  font-size: 3rem !important;
+figure.example pre {
+  white-space: pre-wrap;
+  font: inherit;
+  width: 65%;
+  margin: auto;
 }
 
-.animating {
-  -webkit-backface-visibility: hidden;
-  -webkit-transition: translate3d(0, 0, 0);
+#textarea {
+  margin: auto;
+}
+#textarea label {
+  text-align: center;
+}
+#textarea > div, #textarea textarea {
+  min-height: 200px;
+  width: 100%;
+  margin: auto;
 }
 
+#prompt_output {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background: inherit;
+}
+
+main.content {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+}
+main.content label {
+  text-align: center;
+  font-size: 15rem;
+  font-family: "monofur";
+  text-transform: lowercase;
+  font-weight: 500;
+  letter-spacing: -9px;
+  word-spacing: 0px;
+}
+main.content label, main.content pre, main.content output {
+  margin: auto;
+}
+
+@media (max-width: 400px) {
+  #site-head-content .logo h1 {
+    font-size: 10rem;
+    -webkit-transition: all, 1s;
+    -moz-transition: all, 1s;
+    transition: all, 1s;
+  }
+}
+@media (max-height: 250px) {
+  #site-head-content .logo h1 {
+    font-size: 9rem;
+    -webkit-transition: all, 1s;
+    -moz-transition: all, 1s;
+    transition: all, 1s;
+  }
+}
+@media (max-height: 150px) {
+  #site-head-content .logo h1 {
+    font-size: 8rem;
+    -webkit-transition: all, 1s;
+    -moz-transition: all, 1s;
+    transition: all, 1s;
+  }
+}
 .cf {
   overflow: hidden;
 }
@@ -257,3 +373,10 @@ footer p a {
   -o-transition-property: all;
   transition-property: all;
 }
+
+.moved {
+  border: 4px solid rgba(200, 100, 150, 0.2);
+  position: absolute;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -41,14 +41,17 @@ var path           = require('path'),
             watch: {
                 handlebars: {
                     files: [ 'views/**/*.hbs', 'views/*.hbs'],
+	                exclude: ['node_modules/**/*'],
                     tasks: ['handlebars']
                 },
                 scss: {
                     files: ['<%= paths.swagAssets %>/sass/*.scss'],
+	                exclude: ['node_modules/**/*'],
                     tasks: ['sass:dist']
                 },
                 jshint:{
                     files: ['<%= paths.swagAssets %>/js/*.js' ],
+	                exclude: ['node_modules/**/*'],
                     tasks: ['jshint:lint']
                 },
                 livereload: {
@@ -67,6 +70,7 @@ var path           = require('path'),
                 express: {
                     // Restart any time client or server js files change
                     files:  ['**/**/*.js', '**/*.js', '*.js'],
+	                exclude: ['node_modules/**/*'],
                     tasks:  ['express:dev'],
                     options: {
                         //Without this option specified express won't be reloaded
@@ -155,7 +159,7 @@ var path           = require('path'),
             sass: {
                 dist: {
                     files: {
-                        'public/css/blog.css' :'public/sass/blog.scss'
+                        'public/css/style.css' :'public/sass/style.scss'
                     },
                     options: {
                         loadPath: bourbon,

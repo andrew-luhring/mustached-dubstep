@@ -2,10 +2,11 @@
 //idea2: on worktypes hover, it rotates 45degrees while the words stay horizontal, and then a div unhides and pushes it down so it's making a down arrow.
 //idea2 variant: happens on click instead but the arrow's line height follows you down the page.
 
-
-body{
-  width:  100%;
-  background: $black;
+#page_head{
+  menu, section, label, textarea{
+    margin: auto;
+    flex:1;
+  }
 }
 #site-head,
 #site-head >div{
@@ -14,44 +15,21 @@ body{
   @include flex(1);
   width: 100%;
   text-align: center;
-  background: $dark-purple;
 }
 #site-head{
   min-height: 125px;
 }
-.no-js{
-  #site-head{
-    position: absolute;
-    height: 100%;
-    display: flex;
-    flex-flow: column;
-    width: 100%;
-    text-align: center;
-    z-index: 1000;
-    background: #1D2C41;
-    >div{
-        height: 50%;
-        position: relative;
-        @include display(flex);
-        @include align-content(center);
-        @include justify-content(flex-start);
-      &:first-of-type{
-        justify-content: flex-end;
-        }
-    }
-  }
-}
 #site-head-content{
   @include box-align(stretch);
   @include justify-content(flex-end);
+  h2{
+    flex: 1;
+    font-weight: 300;
+  }
   .logo {
     position:  relative;
+    flex: 1;
     h1{
-        color: $white;
-      &:hover{
-        background: $light-green;
-        color: $cream;
-      }
       font-size:  15rem;
       font-family: "monofur";
       text-transform: lowercase;
@@ -64,6 +42,94 @@ body{
       }
     }
   }
+
+
+
+section{
+  @include display(flex);
+  @include justify-content(space-around);
+  @include align-content(center);
+  @include align-items(center);
+  margin: 0 40px;
+  min-width: 700px;
+  max-width: 960px;
+  > div {
+    @include align-self(flex-start);
+    @include flex-direction(column);
+    @include display(flex);
+  }
+}
+input:not([type="color"])
+, select {
+  flex: 1;
+}
+input, select{
+  margin: 10px auto;
+}
+input[type="color"], input[type="number"]{
+  height: 75px;
+  width: 75px;
+}
+input {
+  padding: 0;
+  height: 40px;
+  text-align: center;
+  flex: 0.5;
+}
+figure.example{
+  @include box-sizing(border-box);
+  text-align: left;
+  overflow:hidden;
+  border: 5px solid $black;
+  padding: 30px;
+  position:absolute;
+  top: 0;
+  left: 0;
+  width:100%;
+  background: $white;
+  pre{
+    white-space: pre-wrap;
+    font: inherit;
+    width: 65%;
+    margin:auto;
+  }
+}
+#textarea {
+  margin: auto;
+  label{
+    text-align: center;
+  }
+  >div, textarea{
+    min-height: 200px;
+    width: 100%;
+    margin: auto;
+  }
+}
+#prompt_output{
+  font-family: inherit ;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background: inherit;
+}
+main.content{
+  @include display(flex);
+  @include flex-direction(column);
+  label{
+    text-align: center;
+    font-size:  15rem;
+    font-family: "monofur";
+    text-transform: lowercase;
+    font-weight: 500;
+    letter-spacing: -9px;
+    word-spacing: 0px;
+  }
+  label, pre, output{
+    margin: auto;
+  }
+}
+
 @media (max-width: 400px) {
   #site-head-content .logo h1{
    font-size:  10rem;
@@ -83,32 +149,3 @@ body{
   }
 }
 
-#page-head{
-}
-.logo_o{
-  position: relative;
-}
-
-
-.button{
-  display: table;
-  float:right;
-  color: white;
-  padding: 0.5rem;
-  a{
-    border-radius: 50%;
-    width: 7rem;
-    height: 7rem;
-    display:table-cell;
-    vertical-align: middle;
-    text-align:center;
-    background:  $dark-purple;
-    color:  $cream;
-    border: 2px solid $orange;
-    &:hover{
-      color: $light-blue;
-      background: $orange;
-      border-color: $cream;
-    }
-  }
-}

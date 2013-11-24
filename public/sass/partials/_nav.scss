@@ -1,200 +1,41 @@
-.life, .workTypes, #main_nav > ul {
-  height: 100%;
 
-}
 .flexbox {
-  .life, .workTypes, #main_nav > ul{
+  #main_nav{
   @include display(flex);
   @include flex-direction(row);
   @include flex(1);
   @include align-content(center);
   @include justify-content(center);
   }
-  #main_nav > ul {
-    @include display(inline-flex);
-  }
-}
-
-.no-flexbox.flexboxlegacy, .noflexbox.flexboxlegacy{
-  .life, .workTypes, #main_nav > ul {
-    @include display-box;
-    @include box-orient(horizontal);
-    @include box-flex(1);
-    @include box-pack(center);
-    @include box-align(center);
-  }
-  #main_nav > ul {
-    @include display-box;
-  }
 }
 #main_nav{
-  margin:  0 auto;
-  width: 50%;
-  height: 5rem;
-  min-width: 55rem;
   &.updated {
     position:  fixed;
     right:  0px;
     top: 0px;
   }
-  >ul{
-    width:  100%;
-    height: 100%;
-    position: relative;
-    noscript {
-      position: absolute;
-      top: 150%;
-      width: 100%;
-      color: $white;
-      right: 0;
-    }
+}
+.command{
+  width: 75px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font: normal normal 900 5rem "Quicksand", sans-serif;
+  overflow: hidden;
+  border: 8px solid $white;
+  border-radius: 50%;
+  background: $black;
+  color: $white;
+  box-shadow: 0 0 10px 0 $black;
+  margin: 10px;
+}
+.up{
+  @include transform(rotate(180deg));
+}
+.down{
+  @include transform(rotate(0deg));
 
-  }
 }
 
-.flexbox{
-  >ul {
-    &.updated {
-      @include flex-direction(column);
-    }
-  }
-}
-
-
-.noflexbox.flexboxlegacy, .no-flexbox.flexboxlegacy{
-  >ul{
-    &.updated{
-      @include box-orient(vertical);
-    }
-  }
-}
-
-.life{
-  width: 50%;
-}
-
-.workTypes{
-  margin: 0 0.5rem;
-    &:not(:target):not(:hover) a{
-      @include transition(all 1s);
-    }
-  a {
-    background: $white;
-    margin: auto;
-    padding: 1.6rem;
-    width: 100%;
-    box-sizing: border-box;
-    @include box-sizing(border-box);
-    
-    &:hover {
-      background: $light-green;
-    }
-  }
-}
-
-.theme-1, .theme-1 a{
-  background: $purple;
-  color: $dark-purple ;
-  &.variant-1{
-    color: $light-blue;
-  }
-}
-.theme-2, .theme-2 a{
-  background: $orange ;
-  color: $dark-purple ;
-  &.variant-1{
-    color: $white ;
-  }
-  &.variant-2{
-    color: $light-blue ;
-  }
-}
-.theme-3, .theme-3 a{
-  & .logo{
-    background: $dark-purple;
-  }
-  background: $intense_blue ;
-  color:  $white ;
-  &:hover {
-    color: $dark-purple;
-  }
-}
-
-
-
-
-//nav > ul > li:not(:target):not(:hover) > ul {
-//  visibility: collapse;
-//}
-#main_nav.responsive_nav {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  z-index: 5;
-  height: auto;
-  max-width: 10%;
-  min-width: 0;
-  height: 100%;
-}
-
-.flexbox #main_nav.responsive_nav ul {
- @include flex-direction(column);
-  @include align-content(space-between);
-}
-
-.noflexbox.flexboxlegacy, .no-flexbox.flexboxlegacy{
-  #main_nav.responsive_nav ul {
-    @include box-orient(vertical);
-    @include box-pack(justify);
-  }
-}
-
-.flexbox{
-  .responsive_nav{
-    .workTypes{
-      margin: 1.2rem 0;
-      @include flex-direction(column);
-      vertical-align: middle;
-      a{
-        margin: auto;
-        @include display(flex);
-        @include align-content(flex-end);
-        @include justify-content(space-around);
-        @include flex-direction(column);
-        width: 100%;
-        @include flex(1);
-      }
-    }
-  }
-}
-.noflexbox.flexboxlegacy, .no-flexbox.flexboxlegacy{
-  .responsive_nav{
-    .workTypes{
-      margin: 1.2rem 0;
-      @include box-orient(vertical);
-      vertical-align: middle;
-      a{
-        margin: auto;
-        display: flex;
-        @include display-box;
-        @include box-align(end);
-        @include box-pack(justify);
-        @include box-orient(vertical);
-        @include box-flex(1);
-        width: 100%;
-      }
-    }
-  }
-}
-@media all and (max-width: 960px){
-  .workTypes{
-    a{
-      font-size: 1rem;
-    }
-  }
-}
-
-.responsive_nav .workTypes a {
-  //height: 100%;
-  padding: 0;
-}

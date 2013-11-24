@@ -1,0 +1,80 @@
+<section id="font">
+    <div>
+        <label for="font_family">Font Face</label>
+	    <select id="font_family" name="font_family" ng-model="font_family">
+        <optgroup>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Arial">Arial</option>
+            <option value="Raleway">Raleway</option>
+            <option value="Avenir">Avenir</option>
+            <option value="serif">Serif</option>
+        </optgroup>
+    </select>
+    </div>
+    <div><label for="font_size">Font Size</label>
+	    <input id="font_size" name="font_size" type="number" placeholder="font size" ng-model="font_size">
+    </div>
+    <div>
+	    <label for="line_height" ng-model="line_height">Line Height</label>
+	    <input id="line_height" type="number" placeholder="line height" ng-model="line_height">
+    </div>
+    <div>
+	    <label for="letter_spacing">Letter Spacing</label>
+	    <input id="letter_spacing" type="number" placeholder="letter spacing" ng-model="letter_spacing">
+    </div>
+    <div>
+	    <label for="font_color">Font Color</label>
+	    <input id="font_color" name="font_color" type="color" ng-model="font_color">
+    </div>
+
+</section>
+<figure id="example_container" class="example hide" ng-controller="prompterController">
+    <legend>(Example)</legend>
+
+	<pre id="font_example" class="example_pre example font" style="
+	font-family: [[ font_family ]] ;
+	font-size: [[ font_size ]]px;
+	line-height: [[ line_height ]]px;
+	letter-spacing: [[ letter_spacing ]]px;
+	color: [[ font_color ]];
+	background: [[background_color ]]
+	">
+<h3 style="
+	font-family: [[ font_family ]] ;
+	font-size: [[ font_size * 1.8 ]]px;
+	line-height: [[ line_height ]]px;
+	letter-spacing: [[ letter_spacing ]]px;
+	color: [[ font_color ]];
+	background: [[background_color ]]"
+		>Well sir, it's this rug I have, really tied the room together.</h3>
+Ever hear of the Seattle Seven?
+Yeah. Roadie for Metallica. Speed of Sound Tour.
+Walter, this isn't a First Amendment thing. I don't see any connection to Vietnam, Walter.
+	</pre>
+</figure>
+<section id="page">
+    <div>
+        <label for="bgc">Background Color</label>
+        <input id="bgc" type="color" ng-model="background_color">
+    </div>
+    <div>
+        <label for="viewport_height">Viewport Height</label>
+        <input id="viewport_height" type="number" placeholder="100%" min="0" max="100" ng-model="viewport_height">
+    </div>
+    <div>
+        <label for="viewport_width">Viewport Width</label>
+        <input id="viewport_width" type="number" placeholder="100%" min="0" max="100" ng-model="viewport_width">
+    </div>
+</section>
+<section id="scroll">
+    <div>
+        <label for="scroll_speed">Scroll Speed</label>
+        <input id="scroll_speed" type="number" ng-model="scroll_speed">
+    </div>
+    <div>
+        <label for="scroll_delay">Delay (before start)</label>
+        <input id="scroll_delay" type="number" placeholder="seconds" min="0" max="100" ng-model="scroll_delay">
+    </div>
+    <button id="fullscreen">fullscreen</button>
+</section>
+
