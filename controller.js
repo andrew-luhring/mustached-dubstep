@@ -12,7 +12,7 @@
         , portN = 5000
         , publicD =  path.join(__dirname, 'public');
         var workView = {
-            category : model;
+            category : model
         };
     //whatever happens, this file needs to call Server.
     app.use(express.static(publicD))

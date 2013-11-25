@@ -67,6 +67,15 @@ function Obj(selector){
 		}
 	};
 }
+function IframeObj(selector){
+		var thing = $(selector);
+		Obj.call(this, thing);
+		thing.width =  thing.width();
+		thing.height =  thing.height();
+		thing.resize  =  function(){
+			fullWindowResize(thing, win, 100);
+		};
+	}
 $("body").append("<iframe src ='http://localhost:5000' id='test'></iframe>");
 var win = getWindowDimensions();
 $(document).ready(function(){
@@ -97,7 +106,7 @@ $(document).ready(function(){
 		}
 	}
 	var quietModeIsOn = false
-		,   $iframe = new iframeObj("#test");
+		,   $iframe = new IframeObj("#test");
 
 	describe('make an object', function(){
 		var obj = new Obj($("body"));
@@ -141,8 +150,9 @@ $(document).ready(function(){
 	describe("iframe", function(){
 		it("should be  greater than or equal to window size", function(){
 			setTimeout(function(){
-				var wid = new iframeObj("#test")
-					, resizeThis = wid.selector.selector;
+				var wid = new IframeObj("#test")
+					, resizeThis = wid.selector;
+				console.log(wid.selector);
 
 				console.log(wid.width + " <=wid | win=>" + win.width);
 				var counter = 0;
