@@ -1,7 +1,6 @@
 (function(){
 	"use strict";
-var code = {}
-	,   $viewport = $("html,body");
+var code = {},   $viewport = $("html,body");
 
 code.foo = function(){
 	alert("foo");
@@ -17,7 +16,6 @@ function checkPercentage(value){
 		return value;
 	}
 }
-
 function getWindowDimensions(){
     var win = {
         widthRem: (window.innerWidth / 10) + "rem",
@@ -123,25 +121,6 @@ jQuery(document).ready(function () {
         , current = win;
 	checkNav(current);
 	//
-	$("#fullscreen").on("click", function(){
-		var example = document.querySelector("#example_container")
-			,   fs_width = $("#viewport_width").val()
-			,   fs_height = $("#viewport_height").val();
-
-		fs_width = checkPercentage(fs_width);
-		fs_height = checkPercentage(fs_height);
-
-		$("#example_container").width(fs_width + "%");
-		$("#example_container").height(fs_height + "%");
-		if (example.requestFullscreen) {
-			example.requestFullscreen();
-		} else if (example.mozRequestFullScreen) {
-			example.mozRequestFullScreen();
-		} else if (example.webkitRequestFullscreen) {
-			example.webkitRequestFullscreen();
-		}
-	});
-
 fullWindowResize("#test, body > header, #textarea, body > main", win, 100);
 	//
 	$("#fullscreen").on("click", function(){
@@ -207,7 +186,6 @@ fullWindowResize("#test, body > header, #textarea, body > main", win, 100);
 });
 
 
-
 $("#page_head input, #page_head select").on("change", function(){
 		var example_height = $("#site-head-content").height();
 	console.log(example_height);
@@ -220,7 +198,6 @@ $("#page_head input, #page_head select").on("change", function(){
 
 	}
 });
-
 $("input, label, a, textarea, button, h1, h2 ").attr("draggable", "true");
 
 (function(){

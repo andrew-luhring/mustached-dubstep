@@ -34,42 +34,46 @@ function fullWindowResize(objToResize, currentWindowObj, animateTime) {
 		}, animateTime).removeClass("animating");
 	}
 }
-function Obj(selector){
-	this.selector = selector;
-	this.prototype = this.prototype;
-	this.testString = "string";
-	this.isjQuery = function(){
-		var result;
-		if(this.selector instanceof jQuery){
-			result = true;
-		} else {
-			result = false;
-		}
-		return result;
-	};
-	this.listProperties = function(justTheNumberInObject){
-		var arr = [];
-		for (var i in this){
-			if (this.hasOwnProperty(this[i])) {
-				//debuggerer("todo: I should figure out why this hasownproperty thing is important ");
+
+	function Obj(selector){
+		this.prototype = Object.create(jQuery.prototype);
+		jQuery.call(this, selector);
+		function jqTest (thingToTest){
+			if(thingToTest.selector instanceof jQuery){
+				return true;
 			} else {
-				var list = [ i , this[i] ];
-				console.log(list);
-				arr.push(list);
+				return  false;
 			}
 		}
-		if(justTheNumberInObject){
-			alert(arr.length);
-			return arr.length;
-		} else {
-			alert("winrar");
+		function listProp (objectToListPropertiesOf){
+			var arr = [];
+			for (var i in objectToListPropertiesOf){
+				if (objectToListPropertiesOf.hasOwnProperty(objectToListPropertiesOf[i])) {
+				} else {
+					var keys = i ;
+					var props = objectToListPropertiesOf[i];
+					arr.push(keys, props);
+				}
+			}
 			return arr;
 		}
-	};
-}
-$("body").append("<iframe src ='http://localhost:5000' id='test'></iframe>");
-var win = getWindowDimensions();
-$(document).ready(function(){
+		this.testString = "string";
+		this.wasjQuery = jqTest(this);
+		this.numberOfProperties = listProp(this).length + 1;
+		this.listProperties = listProp(this);
+	}
+	function IframeObj(selector){
+		Obj.call(this, selector);
+		var thing = $(selector);
+		this.width =  thing.width();
+		this.height =  thing.height();
+		this.resize  =  function(){
+			fullWindowResize(this, win, 100);
+		};
+	}
+	$("body").append("<iframe src ='http://localhost:5000' id='test'></iframe>");
+	var win = getWindowDimensions();
+	$(document).ready(function(){
 	var didScroll
 		,   animateScroll
 		,   direction = "none"
@@ -81,72 +85,81 @@ $(document).ready(function(){
 			fullWindowResize($iframe, win, 1000);
 });
 
-(function(){
-	function quietMode(on, debuggerStatement){
-		//turns off debugger statements for completed tasks.
-		if( on !== true ){
-			debuggerer(debuggerStatement);
-		}
-	}
-	function debuggerer(smartAssRemark){
-		if(smartAssRemark){
-			console.log("\n >>>>>>>>>>>>>>>>>" +  smartAssRemark + "<<<<<<<<<<<<<<<<<  \n");
-		} else {
-			console.log("\n >>>>>>>>>>>>>>>>>DUDE YOU MESSED UP YOUR DEBUGGERER STATEMENT. TURN YOUR LIFE AROUND.<<<<<<<<<<<<<<<<<  \n");
-		}
-	}
-	var quietModeIsOn = false
-		,   $iframe = new iframeObj("#test");
 
-	describe('make an object', function(){
-		var obj = new Obj($("body"));
-			it("will return an object", function(){
-				expect(obj).to.be.a("object");
-			});
-	});
-	describe("verify properties exist", function(){
-		var obj= new Obj($("body"));
-		it("will return properties of an object",function(){
-			expect(obj.testString).to.eql("string");
-		});
-	});
-	describe("lists length properties array", function(){
-		var obj = new Obj($("body"));
-		it("will enumerate properties of an object", function(){
-			var num = obj.listProperties(true);
-			expect(num).to.be.greaterThan(1);
-			quietMode(quietModeIsOn, num);
-		});
-	});
-	describe("verify properties exist", function(){
-		var obj = new Obj($("body"));
-		it("will list properties of the object", function(){
-			var things = obj.listProperties(false);
-			var num = obj.listProperties(true);
-			var isjQuery = obj.isjQuery();
-			expect(things).to.not.be.empty();
-			quietMode(quietModeIsOn, things);
-			quietMode(quietModeIsOn, isjQuery);
-		});
-	});
-	describe("does iframe exist", function(){
-		it("there should be an iframe.", function(){
-			if(!$iframe){
-				debuggerer("no iframe");
+	(function(){
+		function quietMode(on, debuggerStatement){
+			//turns off debugger statements for completed tasks.
+			if( on !== true ){
+				debuggerer(debuggerStatement);
 			}
-			expect($iframe);
-		});
-	});
-	describe("iframe", function(){
-		it("should be  greater than or equal to window size", function(){
-			setTimeout(function(){
-				var wid = new iframeObj("#test")
-					, resizeThis = wid.selector.selector;
+		}
+		function debuggerer(smartAssRemark){
+			if(smartAssRemark){
+				console.log("\n >>>>>>>>>>>>>>>>>" +  smartAssRemark + "<<<<<<<<<<<<<<<<<  \n");
+			} else {
+				console.log("\n >>>>>>>>>>>>>>>>>DUDE YOU MESSED UP YOUR DEBUGGERER STATEMENT. TURN YOUR LIFE AROUND.<<<<<<<<<<<<<<<<<  \n");
+			}
+		}
+		var quietModeIsOn = true
+			,   $iframe = new IframeObj("#test");
 
-				console.log(wid.width + " <=wid | win=>" + win.width);
+		describe('make an object', function(){
+			var obj = new Obj($("body"));
+				it("will return an object", function(){
+					var pass = obj + " is a valid object.";
+					var failError = obj + " is NOT a valid object";
+					expect(obj).to.be.a("object");
+					if(typeof obj === "object"){
+						quietMode(quietModeIsOn, pass );
+					} else{
+						quietMode(quietModeIsOn, failError );
+					}
+				});
+		});
+		describe("lists length properties array", function(){
+			var obj = new Obj($("body"));
+			it("will enumerate properties of an object", function(){
+				var num = obj.numberOfProperties;
+				expect(num).to.be.greaterThan(1);
+				quietMode(quietModeIsOn, "the jQuery 'body' object has " + num + " properties");
+			});
+		});
+		describe("verify properties exist", function(){
+			var obj = new Obj($("body"));
+			it("will list properties of the object", function(){
+				var things = obj.listProperties;
+
+				expect(things).to.not.be.empty();
+				quietMode(quietModeIsOn, "the jQuery 'body' object has the properties " + things);
+
+			});
+		});
+		describe("iframe", function(){
+			it("exists", function(){
+				if(!$iframe){
+					expect().fail( "no iframe");
+					quietMode(false, "no iframe");
+				} else {
+					expect($iframe);
+					quietMode(quietModeIsOn, "iframe exists.");
+				}
+			});
+		});
+		describe("iframe's", function(){
+		it("width should be  greater than or equal to window size's width", function(){
+				var wid = new IframeObj($("#test"));
 				var counter = 0;
-				expect(wid.width).to.be.lessThan(win.width).and.greaterThan(300);
-			}, 100);
+				if( typeof wid.width !== "undefined"){
+					var pass = "wid.width aka IframeObj's width is " + wid.width;
+					expect(wid.width).to.be.lessThan(win.width);
+					quietMode(quietModeIsOn, pass + " which is less than window width: " + win.width);
+					expect(wid.width).to.be.greaterThan(299);
+					quietMode(quietModeIsOn, wid.width + " wid.width is also greater than 299" );
+				} else {
+					var failError = "wid.width aka IframeObj is undefined";
+					expect().fail( failError );
+					quietMode(false, failError);
+				}
 		});
 	});
 })();
