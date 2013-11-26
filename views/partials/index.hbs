@@ -1,23 +1,30 @@
 {{!< default}}
-
-
-<main class="content" role="main">
-
-    {{#each category}}
-    <article id="category_{{id}}" class="post">
-        <header id="{{id}}" class="post-header">
-            <h2 class="post-title"><a class="post-title title-link" href="#{{id}}">{{id}}</a></h2>
-        </header>
-        <section class="post-full">
-        {{#each ref}}
-            <a id="ref_{{id}}" href="{{uri}}" data-class="{{type}}">{{id}}</a>
-        {{/each}}
-        </section>
-    </article>
-    {{/each}}
-
-
-{{!! After all the posts, we have the previous/next pagination links }}
-
-
+<section id="textarea">
+    <div>
+        <label for="input_text">input</label>
+        <textarea spellcheck="true" id="input_text" data-content="input" ng-model="input_text"></textarea>
+    </div>
+</section>
+<menu id="main_nav" class="default_nav" type="toolbar">
+    <menuitem id="up" class="command arrow up"><span>v</span></menuitem>
+    <menuitem id="page_up" class="command arrow up"><span>v</span></menuitem>
+    <menuitem id="down" class="command arrow down"><span>v</span></menuitem>
+    <menuitem id="page_down" class="command arrow down"><span>v</span></menuitem>
+    <menuitem id="top" class="command">top</menuitem>
+    <menuitem id="bottom" class="command">bottom</menuitem>
+</menu>
+<main class="content" role="main" style="background: [[background_color ]];">
+    <label for="output">output</label>
+        <output for="input_text" id="output">
+	        <pre id="prompt_output" style="
+	        font-family: [[ font_family ]] ;
+	        font-size: [[ font_size ]]px;
+	        line-height: [[ line_height ]]px;
+	        letter-spacing: [[ letter_spacing ]]px;
+	        color: [[ font_color ]];
+	        background: [[background_color ]];
+	        width: [[ viewport_width ]];
+	        height: [[ viewport_height ]];
+	        ">[[ input_text ]]</pre>
+        </output>
 </main>
