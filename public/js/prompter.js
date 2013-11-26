@@ -2,6 +2,7 @@
 	"use strict";
 var code = {},   $viewport = $("html,body");
 
+
 code.foo = function(){
 	alert("foo");
 	return "foo";
