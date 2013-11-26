@@ -11,8 +11,6 @@
         , defaultF = viewsD + 'default.hbs'
         , portN = 5000
         , publicD =  path.join(__dirname, 'public');
-
-
         var workView = {
             category : model
         };
